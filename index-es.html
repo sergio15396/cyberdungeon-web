@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CyberDungeon</title>
+
+    <link rel="stylesheet" href="styles-es.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <button class="navbar-brand" onclick="switchTab('home')">
+                        CYBER<span class="brand-accent">DUNGEON</span>
+                    </button>
+
+                    <!-- Menú resolución web -->
+                    <div class="nav-menu-desktop">
+                        <button class="nav-link active" data-tab="home" onclick="switchTab('home')">Inicio</button>
+                        <button class="nav-link" data-tab="personajes"
+                            onclick="switchTab('personajes')">Personajes</button>
+                        <button class="nav-link" data-tab="combate" onclick="switchTab('combate')">Combate</button>
+                        <button class="nav-link" data-tab="mecanicas"
+                            onclick="switchTab('mecanicas')">Mecánicas</button>
+
+                        <a href="https://cyberdungeon.info.joanysergio.xyz/" class="btn btn-primary btn-sm" target="_blank"
+                            rel="noopener noreferrer">JUGAR AHORA</a>
+                    </div>
+
+                    <!-- Menú móvil (hamburguesa) -->
+                    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" title="menu">
+                        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Menú móvil -->
+                <div class="nav-menu-mobile" id="mobileMenu">
+                    <button class="nav-link-mobile" onclick="switchTab('home'); toggleMobileMenu()">Inicio</button>
+                    <button class="nav-link-mobile"
+                        onclick="switchTab('personajes'); toggleMobileMenu()">Personajes</button>
+                    <button class="nav-link-mobile" onclick="switchTab('combate'); toggleMobileMenu()">Combate</button>
+                    <button class="nav-link-mobile"
+                        onclick="switchTab('mecanicas'); toggleMobileMenu()">Mecánicas</button>
+                    <a href="https://cyberdungeon.info.joanysergio.xyz/" class="btn btn-primary btn-full" target="_blank"
+                        rel="noopener noreferrer">JUGAR AHORA</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <!-- Inicio -->
+            <div id="home-tab" class="tab-content active">
+                <section class="hero">
+                    <div class="container">
+                        <div class="hero-grid">
+                            <div class="hero-left">
+                                <h1 class="hero-title">
+                                    <span class="hero-line-1">EXPLORA</span>
+                                    <span class="hero-line-2">UN MUNDO</span>
+                                    <span class="hero-line-3 neon-glow">CIBERNÉTICO</span>
+                                </h1>
+                                <p class="hero-subtitle">
+                                    CyberDungeon es un juego de exploración y combate por turnos ambientado en un
+                                    complejo corporativo lleno de enemigos cibernéticos. Obtén tesoros, derrota
+                                    monstruos y sé el primero en alcanzar tu objetivo de créditos.
+                                </p>
+
+                                <div class="hero-buttons">
+                                    <a href="https://cyberdungeon.info.joanysergio.xyz/" class="btn btn-primary" target="_blank"
+                                        rel="noopener noreferrer">COMENZAR PARTIDA</a>
+                                </div>
+
+                            </div>
+
+                            <div class="hero-right">
+                                <div class="hero-card">
+                                    <p class="card-title">TABLERO DE JUEGO</p>
+                                    <img src="img/tablero2-1.png" alt="Tablero del Juego" class="hero-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Personajes -->
+            <div id="personajes-tab" class="tab-content">
+                <section class="personajes">
+                    <div class="container">
+                        <h1 class="page-title">
+                            <span class="accent">PERSONAJES</span> DISPONIBLES
+                        </h1>
+                        <p class="page-subtitle">Elige tu personaje y domina el complejo corporativo con tu estrategia
+                            única</p>
+
+                        <div class="personajes-grid">
+                            <!-- Runner -->
+                            <div class="personaje-card">
+                                <div class="personaje-header runner-header">
+                                    <div class="personaje-color"></div>
+                                    <h2>RUNNER</h2>
+                                </div>
+                                <div class="personaje-content">
+
+                                    <div class="personaje-texto">
+                                        <div class="stat-row">
+                                            <span class="stat-label">Movimiento/Turno:</span>
+                                            <span class="stat-value">5 celdas</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-label">Objetivo de Créditos:</span>
+                                            <span class="stat-value">20,000</span>
+                                        </div>
+                                        <p class="personaje-ability">
+                                            Al alcanzar 10,000 créditos obtiene <strong>+1 permanente</strong> a todas
+                                            las tiradas de combate
+                                        </p>
+                                        <p class="personaje-desc">
+                                            El personaje perfecto para quienes buscan equilibrio. Su habilidad lo
+                                            convierte en un luchador más fuerte a medida que acumula riqueza.
+                                        </p>
+                                    </div>
+
+                                    <img src="img/edge-runner.png" alt="Runner" class="personaje-img">
+
+                                </div>
+                            </div>
+
+                            <!-- Hacker -->
+                            <div class="personaje-card">
+                                <div class="personaje-header hacker-header">
+                                    <div class="personaje-color"></div>
+                                    <h2>HACKER</h2>
+                                </div>
+                                <div class="personaje-content">
+
+                                    <div class="personaje-texto">
+                                        <div class="stat-row">
+                                            <span class="stat-label">Movimiento/Turno:</span>
+                                            <span class="stat-value">5 celdas</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-label">Objetivo de Créditos:</span>
+                                            <span class="stat-value">30,000</span>
+                                        </div>
+                                        <p class="personaje-ability">
+                                            Reduce la tirada objetivo en cartas de monstruo de niveles altos; el valor
+                                            aparece ajustado en la carta
+                                        </p>
+                                        <p class="personaje-desc">
+                                            El especialista en penetración de sistemas. Aunque necesita más créditos que
+                                            otros, sus habilidades técnicas le permiten ganar a enemigos poderosos con
+                                            mayor facilidad.
+                                        </p>
+                                    </div>
+
+                                    <img src="img/hacker.png" alt="Hacker" class="personaje-img">
+
+                                </div>
+                            </div>
+
+                            <!-- Ex-Op -->
+                            <div class="personaje-card">
+                                <div class="personaje-header exop-header">
+                                    <div class="personaje-color"></div>
+                                    <h2>EX-OP</h2>
+                                </div>
+                                <div class="personaje-content">
+
+                                    <div class="personaje-texto">
+                                        <div class="stat-row">
+                                            <span class="stat-label">Movimiento/Turno:</span>
+                                            <span class="stat-value">4 celdas</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-label">Objetivo de Créditos:</span>
+                                            <span class="stat-value">10,000</span>
+                                        </div>
+                                        <p class="personaje-ability">
+                                            Los enemigos son significativamente más difíciles de eliminar, compensando
+                                            su menor objetivo
+                                        </p>
+                                        <p class="personaje-desc">
+                                            El operativo militar veterano. Con el objetivo más bajo y movimiento
+                                            limitado, pero enfrenta enemigos más desafiantes. Para jugadores confiados.
+                                        </p>
+                                    </div>
+
+                                    <img src="img/mercenario.png" alt="Ex-Op" class="personaje-img">
+
+                                </div>
+                            </div>
+
+                            <div class="comparison-table">
+                                <h3>Comparativa de Personajes</h3>
+                                <table class="stats-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Personaje</th>
+                                            <th>Movimiento</th>
+                                            <th>Objetivo</th>
+                                            <th>Ventaja</th>
+                                            <th>Desventaja</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Personaje"><span
+                                                    class="color-badge runner-badge">Runner</span></td>
+                                            <td data-label="Movimiento">5 celdas</td>
+                                            <td data-label="Objetivo">20,000</td>
+                                            <td data-label="Ventaja">+1 a tiradas (10k+)</td>
+                                            <td data-label="Desventaja">Objetivo moderado</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Personaje"><span
+                                                    class="color-badge hacker-badge">Hacker</span></td>
+                                            <td data-label="Movimiento">5 celdas</td>
+                                            <td data-label="Objetivo">30,000</td>
+                                            <td data-label="Ventaja">Reduce tiradas</td>
+                                            <td data-label="Desventaja">Objetivo muy alto</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Personaje"><span class="color-badge exop-badge">Ex-Op</span>
+                                            </td>
+                                            <td data-label="Movimiento">4 celdas</td>
+                                            <td data-label="Objetivo">10,000</td>
+                                            <td data-label="Ventaja">Objetivo bajo</td>
+                                            <td data-label="Desventaja">Enemigos difíciles</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+            </div>
+
+            <!-- Combate -->
+            <div id="combate-tab" class="tab-content">
+                <section class="combate">
+                    <div class="container">
+                        <h1 class="page-title">
+                            <span class="accent">SISTEMA</span> DE COMBATE
+                        </h1>
+
+                        <div class="combate-sections">
+                            <!-- PvE -->
+                            <div class="combate-section">
+                                <h2>Combate PvE (Contra Monstruos)</h2>
+                                <div class="combate-content">
+                                    <h3>Mecánica Básica</h3>
+                                    <p>El combate utiliza un <strong>sistema de 2 dados de 6 caras</strong>. Cada
+                                        monstruo trae en su carta la <strong>tirada objetivo</strong> que debe alcanzar
+                                        el jugador.</p>
+
+                                    <h3 class="combate-h3">Resolución del Combate</h3>
+                                    <div class="mechanics-box">
+                                        <p><strong>Victoria:</strong> Si la tirada (más bonificadores) es igual o mayor
+                                            que el objetivo para tu personaje:</p>
+                                        <ul class="mechanics-list">
+                                            <li>Obtienes una carta de tesoro</li>
+                                            <li>La sala se marca como limpiada</li>
+                                        </ul>
+
+                                        <p class="combate-p"><strong>Derrota:</strong> Si la tirada es menor, pierdes y:
+                                        </p>
+                                        <ul class="mechanics-list">
+                                            <li>Se lanza 1 dado para determinar la penalización</li>
+                                            <li>Pierdes una cantidad de créditos según el resultado</li>
+                                            <li>Retrocedes una casilla (quedas expuesto)</li>
+                                        </ul>
+                                    </div>
+
+                                    <h3>Tabla de Penalizaciones</h3>
+                                    <table class="penalty-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Resultado del Dado</th>
+                                                <th>Penalización</th>
+                                                <th>Pérdida de Créditos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td data-label="Resultado">1-3</td>
+                                                <td data-label="Penalización">Herida grave</td>
+                                                <td data-label="Pérdida">Nivel × 1,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td data-label="Resultado">4-5</td>
+                                                <td data-label="Penalización">Herida leve</td>
+                                                <td data-label="Pérdida">Nivel × 500</td>
+                                            </tr>
+                                            <tr>
+                                                <td data-label="Resultado">6</td>
+                                                <td data-label="Penalización">Sin efecto (escapa)</td>
+                                                <td data-label="Pérdida">0 créditos</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p class="note">
+                                        <strong>Nota:</strong> Cuando pierdes, otros jugadores pueden entrar a la sala
+                                        para enfrentarse al monstruo revelado y obtener el botín que dejaste.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- PvP -->
+                            <div class="combate-section">
+                                <h2>Combate PvP (Contra Jugadores)</h2>
+                                <div class="combate-content">
+                                    <h3>Cuándo Ocurre</h3>
+                                    <p>El combate entre jugadores ocurre cuando <strong>dos o más jugadores coinciden en
+                                            un pasillo</strong>.</p>
+
+                                    <h3>Mecánica de Combate</h3>
+                                    <div class="mechanics-box">
+                                        <ul class="mechanics-list">
+                                            <li>Ambos jugadores lanzan <strong>2 dados de 6 caras</strong></li>
+                                            <li>El jugador con el resultado <strong>mayor gana</strong></li>
+                                            <li>En caso de <strong>empate</strong>, se relanza una vez más</li>
+                                        </ul>
+                                    </div>
+
+                                    <h3>Consecuencias del Combate</h3>
+                                    <div class="consequence-grid">
+                                        <div class="consequence-card winner">
+                                            <h4>Ganador</h4>
+                                            <p>Se lleva el <strong>25%</strong> de los créditos del perdedor</p>
+                                        </div>
+                                        <div class="consequence-card loser">
+                                            <h4>Perdedor</h4>
+                                            <p>Pierde un turno completo + pierde el 25% de sus créditos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Niveles de Dificultad -->
+                        <div class="difficulty-section">
+                            <h2>Niveles de Dificultad de Monstruos</h2>
+                            <p>Selecciona un nivel para ver los monstruos correspondientes:</p>
+                            <div class="difficulty-grid">
+                                <button class="difficulty-card level-1 active" data-level="1"
+                                    onclick="filterMonstersByLevel(1)">
+                                    <div class="difficulty-dot"></div>
+                                    <h4>Nivel 1</h4>
+                                    <p>Dificultad Baja</p>
+                                </button>
+                                <button class="difficulty-card level-2" data-level="2"
+                                    onclick="filterMonstersByLevel(2)">
+                                    <div class="difficulty-dot"></div>
+                                    <h4>Nivel 2</h4>
+                                    <p>Baja-Media</p>
+                                </button>
+                                <button class="difficulty-card level-3" data-level="3"
+                                    onclick="filterMonstersByLevel(3)">
+                                    <div class="difficulty-dot"></div>
+                                    <h4>Nivel 3</h4>
+                                    <p>Dificultad Media</p>
+                                </button>
+                                <button class="difficulty-card level-4" data-level="4"
+                                    onclick="filterMonstersByLevel(4)">
+                                    <div class="difficulty-dot"></div>
+                                    <h4>Nivel 4</h4>
+                                    <p>Media-Alta</p>
+                                </button>
+                                <button class="difficulty-card level-5" data-level="5"
+                                    onclick="filterMonstersByLevel(5)">
+                                    <div class="difficulty-dot"></div>
+                                    <h4>Nivel 5</h4>
+                                    <p>Dificultad Alta</p>
+                                </button>
+                                <button class="difficulty-card level-6" data-level="6"
+                                    onclick="filterMonstersByLevel(6)">
+                                    <div class="difficulty-dot"></div>
+                                    <h4>Nivel 6</h4>
+                                    <p>Muy Alta</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="monsters-carousel-wrapper">
+                            <div class="monsters-carousel-track" id="monsterCarousel">
+                                <!-- Nivel 1 -->
+                                <div class="monster-card" data-level="1">
+                                    <img src="img/N1/Aegis.png" alt="Aegis">
+                                </div>
+
+                                <div class="monster-card" data-level="1">
+                                    <img src="img/N1/Protocol.png" alt="Protocol">
+                                </div>
+
+                                <div class="monster-card" data-level="1">
+                                    <img src="img/N1/Scrappy.png" alt="Scrappy">
+                                </div>
+
+                                <div class="monster-card" data-level="1">
+                                    <img src="img/N1/Thrynn.png" alt="Thrynn">
+                                </div>
+
+                                <!-- Nivel 2 -->
+                                <div class="monster-card" data-level="2">
+                                    <img src="img/N2/Kharlo.png" alt="Kharlo">
+                                </div>
+
+                                <div class="monster-card" data-level="2">
+                                    <img src="img/N2/Krysal.png" alt="Krysal">
+                                </div>
+
+                                <div class="monster-card" data-level="2">
+                                    <img src="img/N2/Stalker.png" alt="Stalker">
+                                </div>
+
+                                <div class="monster-card" data-level="2">
+                                    <img src="img/N2/Zyphor.png" alt="Zyphor">
+                                </div>
+
+                                <!-- Nivel 3 -->
+                                <div class="monster-card" data-level="3">
+                                    <img src="img/N3/Quorin.png" alt="Quorin">
+                                </div>
+
+                                <div class="monster-card" data-level="3">
+                                    <img src="img/N3/Raxors.png" alt="Raxors">
+                                </div>
+
+                                <div class="monster-card" data-level="3">
+                                    <img src="img/N3/Trevon.png" alt="Trevon">
+                                </div>
+
+                                <div class="monster-card" data-level="3">
+                                    <img src="img/N3/Vortex.png" alt="Vortex">
+                                </div>
+
+                                <!-- Nivel 4 -->
+                                <div class="monster-card" data-level="4">
+                                    <img src="img/N4/Bastion.png" alt="Bastion">
+                                </div>
+
+                                <div class="monster-card" data-level="4">
+                                    <img src="img/N4/Century.png" alt="Century">
+                                </div>
+
+                                <div class="monster-card" data-level="4">
+                                    <img src="img/N4/Oracle.png" alt="Oracle">
+                                </div>
+
+                                <div class="monster-card" data-level="4">
+                                    <img src="img/N4/Reaver.png" alt="Reaver">
+                                </div>
+
+                                <!-- Nivel 5 -->
+                                <div class="monster-card" data-level="5">
+                                    <img src="img/N5/Prophet.png" alt="Prophet">
+                                </div>
+
+                                <div class="monster-card" data-level="5">
+                                    <img src="img/N5/Scourge.png" alt="Scourge">
+                                </div>
+
+                                <div class="monster-card" data-level="5">
+                                    <img src="img/N5/Velarius.png" alt="Velarius">
+                                </div>
+
+                                <div class="monster-card" data-level="5">
+                                    <img src="img/N5/Zarvok.png" alt="Zarvok">
+                                </div>
+
+                                <!-- Nivel 6 -->
+                                <div class="monster-card" data-level="6">
+                                    <img src="img/N6/Azazel.png" alt="Azazel">
+                                </div>
+
+                                <div class="monster-card" data-level="6">
+                                    <img src="img/N6/Dravok.png" alt="Dravok">
+                                </div>
+
+                                <div class="monster-card" data-level="6">
+                                    <img src="img/N6/Evil-Hacker.png" alt="Evil-Hacker">
+                                </div>
+
+                                <div class="monster-card" data-level="6">
+                                    <img src="img/N6/Marauder.png" alt="Marauder">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Mecánicas -->
+            <div id="mecanicas-tab" class="tab-content">
+                <section class="mecanicas">
+                    <div class="container">
+                        <h1 class="page-title">
+                            <span class="accent">MECÁNICAS</span> DE JUEGO
+                        </h1>
+
+                        <div class="mecanicas-grid">
+                            <div class="mecanica-section">
+                                <h2>Movimiento</h2>
+                                <div class="mecanica-content">
+                                    <h3>Sistema de Turnos</h3>
+                                    <ul class="list-items">
+                                        <li>Cada personaje tiene movimientos máximos por turno ("x" celdas)</li>
+                                        <li>Puedes finalizar el turno antes de gastar todos los movimientos</li>
+                                        <li>Las casillas posibles se resaltan cuando seleccionas tu ficha</li>
+                                    </ul>
+
+                                    <h3>Restricciones</h3>
+                                    <ul class="list-items">
+                                        <li>No puedes atravesar muros ni salas sin explorar</li>
+                                        <li>Los pasillos permiten tránsito libre</li>
+                                        <li>Las entradas de salas son los únicos puntos de acceso</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mecanica-section">
+                                <h2>Tesoros y Créditos</h2>
+                                <div class="mecanica-content">
+                                    <h3>Obtención de Tesoros</h3>
+                                    <p>Los tesoros se <strong>obtienen únicamente al derrotar monstruos</strong>.</p>
+
+                                    <h3>Tipos de Recompensas</h3>
+                                    <ul class="list-items">
+                                        <li><strong>Créditos:</strong> Se suman al objetivo total</li>
+                                        <li><strong>Bonificadores:</strong> +1 o +2 a las tiradas de ataque</li>
+                                    </ul>
+
+                                    <h3>Pérdida de Tesoro</h3>
+                                    <p>Cuando pierdes un combate PvE:</p>
+                                    <ul class="list-items">
+                                        <li>Se lanza un dado (1-6) para determinar la penalización</li>
+                                        <li>Retrocedes una casilla (quedas expuesto a las puertas)</li>
+                                        <li>Otro jugador puede entrar y obtener el botín, o emboscarte</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mecanica-section">
+                                <h2>Salas y Acceso</h2>
+                                <div class="mecanica-content">
+                                    <h3>Estructura de Salas</h3>
+                                    <p>Las salas son objetos que ocupan <strong>múltiples celdas</strong> pero funcionan
+                                        como <strong>una única unidad clicable</strong>.</p>
+
+                                    <h3>Control de Acceso</h3>
+                                    <ul class="list-items">
+                                        <li>Cada sala tiene una o varias <strong>entradas definidas</strong></li>
+                                        <li>Solo puedes acceder a través de estas entradas</li>
+                                        <li>El resto de los bordes funcionan como muros</li>
+                                    </ul>
+
+                                    <h3>Estados de la Sala</h3>
+                                    <ul class="list-items">
+                                        <li><strong>No explorada:</strong> Muestra el reverso de la carta</li>
+                                        <li><strong>Derrota contra monstruo:</strong> La carta se revela pero sigue en
+                                            la sala</li>
+                                        <li><strong>Monstruo derrotado:</strong> Sala limpia permanentemente, carta
+                                            desaparece</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mecanica-section">
+                                <h2>Tablero del Juego</h2>
+                                <div class="mecanica-content">
+                                    <h3>Especificaciones</h3>
+                                    <ul class="list-items">
+                                        <li><strong>Tamaño:</strong> Matriz de 50×30 celdas</li>
+                                        <li><strong>Resolución:</strong> 2000×1200 píxeles</li>
+                                        <li><strong>Tamaño de Casilla:</strong> 40×40 píxeles</li>
+                                    </ul>
+
+                                    <h3>Inicio del Juego</h3>
+                                    <ul class="list-items">
+                                        <li>Los jugadores comienzan en el <strong>Main Hall</strong> (casillas
+                                            centrales)</li>
+                                        <li>Es un espacio seguro sin monstruos</li>
+                                        <li>Desde ahí pueden explorar el complejo</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mecanica-section">
+                                <h2>Interfaz y Controles</h2>
+                                <div class="mecanica-content">
+                                    <h3>Paneles de Información</h3>
+                                    <ul class="list-items">
+                                        <li><strong>Personaje:</strong> Tu información actual</li>
+                                        <li><strong>Tesoros:</strong> Créditos y bonificadores</li>
+                                        <li><strong>Enemigos:</strong> Info de otros personajes</li>
+                                        <li><strong>Log de Eventos:</strong> Historial de acciones</li>
+                                    </ul>
+
+                                    <h3>Controles de Cámara</h3>
+                                    <ul class="list-items">
+                                        <li><strong>Zoom:</strong> Botones +/- o rueda del ratón</li>
+                                        <li><strong>Movimiento:</strong> Click sostenido + arrastrar</li>
+                                        <li><strong>Recentrar:</strong> Botón para centrar en tu personaje</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mecanica-section">
+                                <h2>Multijugador</h2>
+                                <div class="mecanica-content">
+                                    <h3>Sistema de Sala</h3>
+                                    <ul class="list-items">
+                                        <li><strong>Creación:</strong> El anfitrión genera un código único</li>
+                                        <li><strong>Unirse:</strong> Otros jugadores introducen el código</li>
+                                        <li><strong>Selección:</strong> Cada jugador elige su personaje único</li>
+                                        <li><strong>Inicio:</strong> Solo cuando todos han seleccionado</li>
+                                    </ul>
+
+                                    <h3>Comunicación</h3>
+                                    <p>Juego de conexión real-time y sincronización de turnos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-row">
+                        <div class="footer-icons">
+                            <a href="https://discord.gg/PRdCMQRft2" target="_blank" rel="noopener noreferrer"
+                                title="Discord">
+                                <i class="fa-brands fa-discord"></i>
+                            </a>
+                            <a href="https://github.com/sergio15396" target="_blank" rel="noopener noreferrer"
+                                title="GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2026 CyberDungeon. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script-es.js"></script>
+</body>
+
+</html>
